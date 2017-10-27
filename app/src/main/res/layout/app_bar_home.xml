@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="entre2.house_home.kostanku.HomeActivity"
+    android:background="#fff">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/appBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimaryDark"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottomNavigationViewLayout">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_gravity="top"
+            android:background="@drawable/shadow"/>
+        <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/bottomNavigationView"
+            app:menu="@menu/menu_navigation">
+        </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
+    </FrameLayout>
+
+    <entre2.house_home.kostanku.CustomViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewPager"
+        android:layout_above="@+id/bottomNavigationViewLayout"
+        android:layout_below="@id/appBar"
+        >
+
+    </entre2.house_home.kostanku.CustomViewPager>
+
+    <include layout="@layout/content_home" />
+
+</RelativeLayout>

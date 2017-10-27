@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="entre2.house_home.kostanku.KostDetailActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/kostImagePreview"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/rasuna_mansion_1"
+                android:scaleType="centerCrop"
+                />
+            <RelativeLayout
+                android:id="@+id/kostDetailHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/kostImagePreview"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:id="@+id/kostName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kost Loving Hut"
+                    android:textColor="@color/colorBlack"
+                    />
+                <TextView
+                    android:id="@+id/kostAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/kostName"
+                    android:text="Jl. K.H. Syahdan No. 123"
+                    android:textColor="@color/colorBlack"/>
+                <TextView
+                    android:id="@+id/kostGenderType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/kostAddress"
+                    android:text="Man and Woman"
+                    android:textColor="@color/colorWhite"
+                    android:padding="8dp"
+                    android:background="@drawable/border_radius_color_primary"
+                    />
+                <TextView
+                    android:id="@+id/kostPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/kostGenderType"
+                    android:text="Rp. 3.5 jt/bl"
+                    android:textColor="@color/colorBlack"/>
+            </RelativeLayout>
+            <ExpandableListView
+                android:id="@+id/kostDetailExpandableListView"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_below="@+id/kostDetailHeader"
+                android:childDivider="@color/colorTransparent"
+                android:listSelector="@color/colorTransparent"
+                ></ExpandableListView>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

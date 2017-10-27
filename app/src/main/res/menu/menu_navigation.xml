@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_nearby"
+        android:title="Nearby"
+        android:icon="@drawable/ic_placeholder_fill" />
+    <item
+        android:id="@+id/nav_campus"
+        android:title="Campus"
+        android:icon="@drawable/ic_mortarboard_fill" />
+    <item
+        android:id="@+id/nav_area"
+        android:title="Area"
+        android:icon="@drawable/ic_building_fill" />
+    <item
+        android:id="@+id/nav_search"
+        android:title="Search"
+        android:icon="@drawable/ic_search_fill" />
+</menu>

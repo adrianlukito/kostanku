@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/kostImageView"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/ic_user"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/kostImageView"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvKostName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kost Loving Hut"
+            android:textColor="@color/colorBlack"
+            android:textSize="16dp"
+            />
+        <TextView
+            android:id="@+id/tvKostAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvKostName"
+            android:text="Jl. K.H. Syahdan, Gang Keluarga"
+            android:textColor="@color/colorBlack"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:id="@+id/tvKostGenderType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvKostAddress"
+            android:text="Man and Worman"
+            android:textColor="#fff"
+            android:padding="8dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/border_radius_color_primary"
+            />
+        <TextView
+            android:id="@+id/tvKostPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvKostGenderType"
+            android:text="Rp. 2.3jt/month"
+            android:textSize="18dp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginTop="10dp"
+            />
+    </RelativeLayout>
+</RelativeLayout>

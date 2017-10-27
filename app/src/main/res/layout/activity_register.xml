@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="entre2.house_home.kostanku.RegisterActivity"
+    android:background="#42A5F5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerTopLayout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="#fff"
+            android:textSize="25dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tvSignup"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/border_white"
+        android:layout_marginTop="40dp"
+        android:padding="30dp"
+        android:id="@+id/registerFormLayout"
+        android:layout_below="@+id/registerTopLayout"
+        >
+
+        <EditText
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtName"
+            android:hint="Name"
+            android:drawableRight="@drawable/ic_user"
+            android:textSize="15dp"
+            android:textColorHint="#BBDEFB"
+            />
+
+        <EditText
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtEmail"
+            android:hint="Email"
+            android:drawableRight="@drawable/ic_mail"
+            android:textSize="15dp"
+            android:textColorHint="#BBDEFB"
+            android:layout_below="@id/txtName"
+            />
+        <EditText
+            android:layout_width="260dp"
+            android:inputType="phone"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtPhone"
+            android:hint="Phone"
+            android:drawableRight="@drawable/ic_telephone"
+            android:textSize="15dp"
+            android:textColorHint="#BBDEFB"
+            android:layout_below="@id/txtEmail"
+            />
+
+        <EditText
+            android:layout_width="260dp"
+            android:inputType="textPassword"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtPassword"
+            android:hint="Password"
+            android:drawableRight="@drawable/ic_lock"
+            android:textSize="15dp"
+            android:textColorHint="#BBDEFB"
+            android:layout_below="@+id/txtPhone"/>
+
+        <EditText
+            android:layout_width="260dp"
+            android:inputType="textPassword"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtConfirm"
+            android:layout_marginBottom="40dp"
+            android:hint="Confirm Password"
+            android:drawableRight="@drawable/ic_lock"
+            android:textSize="15dp"
+            android:textColorHint="#BBDEFB"
+            android:layout_below="@+id/txtPassword"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/registerFormLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have an account?"
+            android:id="@+id/alreadyHaveAccount"
+            android:textColor="#BBDEFB"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:id="@+id/linkSignin"
+            android:layout_toEndOf="@+id/alreadyHaveAccount"
+            android:layout_marginLeft="5dp"
+            android:textSize="16dp"/>
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSignup"
+        android:text="Sign Up"
+        android:textSize="20dp"
+        android:layout_below="@id/registerFormLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-25dp"
+        android:textColor="#fff"
+        android:textAllCaps="false"
+        android:background="@drawable/ripple_transparent_border_fill" />
+</RelativeLayout>
