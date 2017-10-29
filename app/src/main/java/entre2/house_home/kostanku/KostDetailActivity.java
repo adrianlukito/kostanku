@@ -1,23 +1,19 @@
 package entre2.house_home.kostanku;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.github.chrisbanes.photoview.PhotoView;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,12 +21,13 @@ import java.util.List;
 
 public class KostDetailActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
-    private ExpandableListView expandableListView;
-    private KostDetailExpandableListViewAdapter kostDetailExpandableListViewAdapter;
     private List<String> listHeader;
     private HashMap<String, List<String>> listChild;
 
-    TextView kostName, kostAddress, kostGenderType, kostPrice, kostTitleName;
+    TextView kostName, kostAddress, kostGenderType, kostPrice, kostTitleName, tvInformation;
+
+    ViewPager viewPager;
+    ViewPagerAdapter viewPagerAdapter;
 
     SliderLayout slider;
 
@@ -88,12 +85,27 @@ public class KostDetailActivity extends AppCompatActivity implements BaseSliderV
         //kostGenderType = (TextView) findViewById(R.id.kostGenderType);
         kostPrice = (TextView) findViewById(R.id.kostPrice);
         kostTitleName = (TextView) findViewById(R.id.kostTitleName);
+        tvInformation = (TextView) findViewById(R.id.tvInformation);
 
         kostName.setTypeface(quicksand, Typeface.BOLD);
         kostAddress.setTypeface(quicksand);
         //kostGenderType.setTypeface(quicksand);
         kostPrice.setTypeface(quicksand);
         kostTitleName.setTypeface(quicksand, Typeface.BOLD);
+        tvInformation.setTypeface(quicksand);
+
+        //INFORMATION
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        viewPagerAdapter.addFragment(new GeneralInformationFragment(), "General Information");
+        viewPagerAdapter.addFragment(new RoomFacilityFragment(), "Room Facility");
+        viewPagerAdapter.addFragment(new BathroomFacilityFragment(), "Bathroom Facility");
+        viewPagerAdapter.addFragment(new PublicFacilityFragment(), "Public Facility");
+        viewPagerAdapter.addFragment(new SurroundingAreaFragment(), "Surrounding Area");
+
+        viewPager.setAdapter(viewPagerAdapter);
     }
 
     public void initData(){

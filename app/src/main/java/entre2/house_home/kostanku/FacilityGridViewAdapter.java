@@ -10,33 +10,31 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 /**
- * Created by Adrian Lukito Lo on 20/10/2017.
+ * Created by Adrian Lukito Lo on 29/10/2017.
  */
 
-public class KostDetailGridViewAdapter extends BaseAdapter{
+public class FacilityGridViewAdapter extends BaseAdapter{
 
     ArrayList<String> facilityNames;
-    ArrayList<Drawable> facilityIcons;
-
-    TextView tvKostFacility;
-    ImageView kostFacilityImageView;
+    ArrayList<Drawable> facilityImages;
 
     Context context;
 
-    public KostDetailGridViewAdapter(Context context){
-        facilityNames = new ArrayList<>();
-        facilityIcons = new ArrayList<>();
+    ImageView kostFacilityImageView;
+    TextView tvKostFacility;
+
+    public FacilityGridViewAdapter(Context context) {
         this.context = context;
+        facilityNames = new ArrayList<>();
+        facilityImages = new ArrayList<>();
     }
 
-    public void addKostDetail(String facilityName, Drawable facilityIcon){
+    public void addFacility(String facilityName, Drawable facilityImage){
         facilityNames.add(facilityName);
-        facilityIcons.add(facilityIcon);
+        facilityImages.add(facilityImage);
     }
 
     @Override
@@ -56,16 +54,20 @@ public class KostDetailGridViewAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        convertView = inflater.inflate(R.layout.facility_row,parent,false);
+        if(convertView == null){
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.facility_row,parent,false);
+        }
 
-        tvKostFacility = (TextView) convertView.findViewById(R.id.tvKostFacility);
+        Typeface quicksand = Typeface.createFromAsset(context.getAssets(), "Quicksand-Regular.ttf");
+
         kostFacilityImageView = (ImageView) convertView.findViewById(R.id.kostFacilityImageView);
+        tvKostFacility = (TextView) convertView.findViewById(R.id.tvKostFacility);
 
+        kostFacilityImageView.setImageDrawable(facilityImages.get(position));
         tvKostFacility.setText(facilityNames.get(position));
-        kostFacilityImageView.setImageDrawable(facilityIcons.get(position));
 
-        Typeface varela = Typeface.createFromAsset(context.getAssets(),"VarelaRound-Regular.ttf");
+        tvKostFacility.setTypeface(quicksand);
 
         return convertView;
     }
