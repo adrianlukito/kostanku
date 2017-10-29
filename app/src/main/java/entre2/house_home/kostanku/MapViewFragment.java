@@ -163,7 +163,7 @@ public class MapViewFragment extends Fragment implements OnMapReadyCallback{
         }
     }
 
-    private void drawCurrRadius(double latitude, double longitude){
+    private void drawCurrRadius(double latitude, double longitude) {
 
         Circle circle = mGoogleMap.addCircle(new CircleOptions()
                 .center(new LatLng(latitude, longitude))
@@ -172,6 +172,4 @@ public class MapViewFragment extends Fragment implements OnMapReadyCallback{
                 .strokeWidth(1)
                 .fillColor(0x44ff0000));
     }
-
-
 }

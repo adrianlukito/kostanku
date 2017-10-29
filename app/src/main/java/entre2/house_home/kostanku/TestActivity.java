@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import com.github.chrisbanes.photoview.PhotoView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,10 +23,8 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
-        initData();
-        expandableListViewAdapter = new ExpandableListViewAdapter(this, listHeader, listChild);
-        expandableListView.setAdapter(expandableListViewAdapter);
+        PhotoView photoView = (PhotoView) findViewById(R.id.photo_view);
+        photoView.setImageResource(R.drawable.sample_1);
     }
 
     public void initData(){

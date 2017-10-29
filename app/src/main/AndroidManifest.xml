@@ -37,7 +37,8 @@
             android:value="AIzaSyAYGPQ1y-Cq0X0os8Lbt5zKwl5zIIl2Vwo" />
 
         <activity android:name=".TestActivity" />
-        <activity android:name=".KostDetailActivity"></activity>
+        <activity android:name=".KostDetailActivity" />
+        <activity android:name=".FullScreenImageSliderActivity"></activity>
     </application>
 
 </manifest>

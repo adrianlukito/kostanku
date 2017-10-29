@@ -94,7 +94,7 @@ public class KostListViewAdapter extends BaseAdapter{
 
         tvKostName.setText(kostNames.get(position));
         tvKostGenderType.setText(kostGenderTypes.get(position));
-        tvKostPrice.setText("Rp. "+kostPrices.get(position));
+        tvKostPrice.setText("Rp. "+kostPrices.get(position)+"/month");
 
         if(kostImages.get(position) == null)
             kostImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.no_image_available));
