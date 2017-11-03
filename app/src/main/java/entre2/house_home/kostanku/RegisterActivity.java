@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import entre2.house_home.kostanku.controllers.UserController;
+import entre2.house_home.kostanku.models.User;
+import entre2.house_home.kostanku.utilities.Session;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -54,6 +59,35 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if(v == linkSignin){
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
+        }
+        else if(v == btnSignup){
+            String email = txtEmail.getText().toString();
+            String name = txtName.getText().toString();
+            String password = txtPassword.getText().toString();
+            String phone = txtPhone.getText().toString();
+            String confirm = txtConfirm.getText().toString();
+
+            User user = new User("",name,email,password,phone);
+
+            String err = UserController.validateRegister(user,confirm);
+            if(!err.equals("")){
+                Toast.makeText(this, err, Toast.LENGTH_SHORT).show();
+            }
+            else{
+                if(UserController.getUser(email) == null) {
+                    UserController.insertUser(user);
+                    Session session = new Session(getApplicationContext());
+                    session.setUser(user);
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    Toast.makeText(this, "email is already used", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
         }
     }
 }

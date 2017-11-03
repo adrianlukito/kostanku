@@ -1,4 +1,4 @@
-package entre2.house_home.kostanku;
+package entre2.house_home.kostanku.utilities;
 
 
 import android.Manifest;
