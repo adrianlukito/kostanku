@@ -20,9 +20,9 @@ public class RoomFacilityFragment extends Fragment {
     GridView gridView;
     FacilityGridViewAdapter gridViewAdapter;
 
-    TextView tvFragmentTitle;
-
     Drawable icon;
+
+    Drawable air_conditioner, chair, fan, table, television, wardrobe, wifi, single_bed, king_bed;
 
     public RoomFacilityFragment() {
         // Required empty public constructor
@@ -37,25 +37,31 @@ public class RoomFacilityFragment extends Fragment {
 
         Typeface quicksand = Typeface.createFromAsset(getActivity().getAssets(), "Quicksand-Regular.ttf");
 
-        tvFragmentTitle = (TextView) view.findViewById(R.id.tvFragmentTitle);
-
-        tvFragmentTitle.setTypeface(quicksand);
-
         icon = getResources().getDrawable(R.drawable.ic_building);
+
+        air_conditioner = getResources().getDrawable(R.drawable.ic_air_conditioner);
+        chair = getResources().getDrawable(R.drawable.ic_chair);
+        fan = getResources().getDrawable(R.drawable.ic_fan);
+        table = getResources().getDrawable(R.drawable.ic_table);
+        television = getResources().getDrawable(R.drawable.ic_television);
+        wardrobe = getResources().getDrawable(R.drawable.ic_wardrobe);
+        wifi = getResources().getDrawable(R.drawable.ic_wifi);
+        single_bed = getResources().getDrawable(R.drawable.ic_single_bed);
+        king_bed = getResources().getDrawable(R.drawable.ic_king_bed);
 
         gridView = (GridView) view.findViewById(R.id.gridView);
 
         gridViewAdapter = new FacilityGridViewAdapter(getContext());
 
-        gridViewAdapter.addFacility("Bed",icon);
-        gridViewAdapter.addFacility("TV",icon);
-        gridViewAdapter.addFacility("Table",icon);
-        gridViewAdapter.addFacility("Chair",icon);
-        gridViewAdapter.addFacility("WiFi asdasdasd asdasdasd",icon);
-        gridViewAdapter.addFacility("AC",icon);
-        gridViewAdapter.addFacility("Chair",icon);
-        gridViewAdapter.addFacility("WiFi",icon);
-        gridViewAdapter.addFacility("AC",icon);
+        gridViewAdapter.addFacility("Single Bed",single_bed);
+        gridViewAdapter.addFacility("King Bed",king_bed);
+        gridViewAdapter.addFacility("TV",television);
+        gridViewAdapter.addFacility("Table",table);
+        gridViewAdapter.addFacility("Chair",chair);
+        gridViewAdapter.addFacility("WiFi",wifi);
+        gridViewAdapter.addFacility("AC",air_conditioner);
+        gridViewAdapter.addFacility("Wardrobe",wardrobe);
+        gridViewAdapter.addFacility("Fan",fan);
 
         gridView.setAdapter(gridViewAdapter);
 

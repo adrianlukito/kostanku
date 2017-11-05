@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:background="@color/colorWhite"
+            android:elevation="5dp">
+
+            <ImageView
+                android:id="@+id/relatedKostPicture"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:elevation="-20dp"
+                android:src="@drawable/sample_1"/>
+            <TextView
+                android:id="@+id/tvRelatedKostName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relatedKostPicture"
+                android:text="Kost Loving Hut"/>
+            <TextView
+                android:id="@+id/tvRelatedKostPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvRelatedKostName"
+                android:text="Rp. 1.500.000"/>
+        </RelativeLayout>
+
+
+</LinearLayout>

@@ -29,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
+        android:scrollbars="none"
         >
 
         <RelativeLayout
@@ -97,15 +98,159 @@
                     android:paddingBottom="5dp"
                     />
             </RelativeLayout>
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/kostDetailHeader">
+
+            </ListView>
+
+            <RelativeLayout
+                android:id="@+id/nextPrevFacilityLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/listView"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <ImageButton
+                    android:id="@+id/btnPrevFacility"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorTransparent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_left_arrow"
+                    android:layout_marginLeft="50dp"
+                    android:padding="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tvFacilityTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textSize="20dp"
+                    android:text="Test Facility"/>
+
+                <ImageButton
+                    android:id="@+id/btnNextFacility"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/colorTransparent"
+                    android:src="@drawable/ic_right_arrow"
+                    android:layout_marginRight="50dp"
+                    android:padding="10dp"/>
+
+            </RelativeLayout>
+
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_below="@id/kostDetailHeader"
+                android:layout_height="300dp"
+                android:layout_below="@id/nextPrevFacilityLayout"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
 
             </android.support.v4.view.ViewPager>
+
+            <RelativeLayout
+                android:id="@+id/reviewLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewPager"
+                android:background="@drawable/border_top"
+                android:paddingTop="10dp">
+                <TextView
+                    android:id="@+id/tvReview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Review"
+                    android:textSize="18dp"
+                    android:paddingLeft="30dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvReview"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_review_filled"
+                        android:layout_margin="3dp"/>
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_review_filled"
+                        android:layout_margin="3dp"/>
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_review_filled"
+                        android:layout_margin="3dp"/>
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_review_filled"
+                        android:layout_margin="3dp"/>
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_review_filled"
+                        android:layout_margin="3dp"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnReview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ripple_transparent_border_fill"
+                    android:text="Review"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_marginRight="20dp"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvRelatedKost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Related Kost"
+                android:textSize="18dp"
+                android:paddingLeft="30dp"
+                android:layout_below="@+id/reviewLayout"
+                android:background="@drawable/border_top"
+                android:paddingTop="10dp"
+                />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvRelatedKost"
+                android:scrollbars="none">
+                <com.linearlistview.LinearListView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/linearListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:orientation="horizontal"
+                    android:dividerPadding="2dp"
+                    android:padding="7dp" />
+            </HorizontalScrollView>
         </RelativeLayout>
     </ScrollView>
 

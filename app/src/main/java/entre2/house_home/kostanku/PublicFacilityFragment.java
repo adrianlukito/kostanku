@@ -20,9 +20,9 @@ public class PublicFacilityFragment extends Fragment {
     GridView gridView;
     FacilityGridViewAdapter gridViewAdapter;
 
-    TextView tvFragmentTitle;
-
     Drawable icon;
+
+    Drawable bicycle, car, cctv, fridge, kitchen, microwave, motorcycle, security, washing_machine;
 
     public PublicFacilityFragment() {
         // Required empty public constructor
@@ -37,21 +37,31 @@ public class PublicFacilityFragment extends Fragment {
 
         Typeface quicksand = Typeface.createFromAsset(getActivity().getAssets(), "Quicksand-Regular.ttf");
 
-        tvFragmentTitle = (TextView) view.findViewById(R.id.tvFragmentTitle);
-
-        tvFragmentTitle.setTypeface(quicksand);
-
         icon = getResources().getDrawable(R.drawable.ic_mail);
+
+        bicycle = getResources().getDrawable(R.drawable.ic_bicycle);
+        car = getResources().getDrawable(R.drawable.ic_car);
+        cctv = getResources().getDrawable(R.drawable.ic_cctv);
+        fridge = getResources().getDrawable(R.drawable.ic_fridge);
+        kitchen = getResources().getDrawable(R.drawable.ic_kitchen);
+        microwave = getResources().getDrawable(R.drawable.ic_microwave);
+        motorcycle = getResources().getDrawable(R.drawable.ic_motorcycle);
+        security = getResources().getDrawable(R.drawable.ic_security);
+        washing_machine = getResources().getDrawable(R.drawable.ic_washing_machine);
 
         gridView = (GridView) view.findViewById(R.id.gridView);
 
         gridViewAdapter = new FacilityGridViewAdapter(getContext());
 
-        gridViewAdapter.addFacility("Laundry",icon);
-        gridViewAdapter.addFacility("Refrigerator",icon);
-        gridViewAdapter.addFacility("Car Park",icon);
-        gridViewAdapter.addFacility("Motorcycle Park",icon);
-        gridViewAdapter.addFacility("Bicycle Park",icon);
+        gridViewAdapter.addFacility("Laundry",washing_machine);
+        gridViewAdapter.addFacility("Refrigerator",fridge);
+        gridViewAdapter.addFacility("Car Park",car);
+        gridViewAdapter.addFacility("Motorcycle Park",motorcycle);
+        gridViewAdapter.addFacility("Bicycle Park",bicycle);
+        gridViewAdapter.addFacility("CCTV",cctv);
+        gridViewAdapter.addFacility("Kitchen",kitchen);
+        gridViewAdapter.addFacility("Security",security);
+        gridViewAdapter.addFacility("Microwave",microwave);
 
         gridView.setAdapter(gridViewAdapter);
 

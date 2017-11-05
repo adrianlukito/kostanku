@@ -2,11 +2,17 @@ package entre2.house_home.kostanku;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -14,22 +20,37 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.linearlistview.LinearListView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class KostDetailActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+public class KostDetailActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener, View.OnClickListener{
 
     private List<String> listHeader;
     private HashMap<String, List<String>> listChild;
 
-    TextView kostName, kostAddress, kostGenderType, kostPrice, kostTitleName, tvInformation;
+    TextView kostName, kostAddress, kostPrice, kostTitleName, tvInformation, tvFacilityTitle, tvReview, tvRelatedKost;
 
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
 
+    ImageButton btnPrevFacility, btnNextFacility;
+
+    Button btnReview;
+
     SliderLayout slider;
+
+    LinearListView linearListView;
+    RelatedKostLinearListViewAdapter linearListViewAdapter;
+
+    Drawable sample1, sample2;
+
+    //TEST TANPA FRAGMENT
+    ListView listView;
+    GeneralInformationListViewAdapter listViewAdapter;
+    //TEST TANPA FRAGMENT
 
     int currentPosition = 0;
     int[] imageInteger = {R.drawable.sample_1,R.drawable.sample_2,R.drawable.sample_3,R.drawable.sample_4};
@@ -79,33 +100,100 @@ public class KostDetailActivity extends AppCompatActivity implements BaseSliderV
         slider.setDuration(4000);
         slider.addOnPageChangeListener(this);
 
-
         kostName = (TextView) findViewById(R.id.kostName);
         kostAddress = (TextView) findViewById(R.id.kostAddress);
-        //kostGenderType = (TextView) findViewById(R.id.kostGenderType);
         kostPrice = (TextView) findViewById(R.id.kostPrice);
         kostTitleName = (TextView) findViewById(R.id.kostTitleName);
         tvInformation = (TextView) findViewById(R.id.tvInformation);
+        tvFacilityTitle = (TextView) findViewById(R.id.tvFacilityTitle);
+        btnPrevFacility = (ImageButton) findViewById(R.id.btnPrevFacility);
+        btnNextFacility = (ImageButton) findViewById(R.id.btnNextFacility);
+        tvReview = (TextView) findViewById(R.id.tvReview);
+        btnReview = (Button) findViewById(R.id.btnReview);
+        tvRelatedKost = (TextView) findViewById(R.id.tvRelatedKost);
 
         kostName.setTypeface(quicksand, Typeface.BOLD);
         kostAddress.setTypeface(quicksand);
-        //kostGenderType.setTypeface(quicksand);
         kostPrice.setTypeface(quicksand);
         kostTitleName.setTypeface(quicksand, Typeface.BOLD);
         tvInformation.setTypeface(quicksand);
+        tvFacilityTitle.setTypeface(quicksand);
+        tvReview.setTypeface(quicksand);
+        btnReview.setTypeface(quicksand);
+        tvRelatedKost.setTypeface(quicksand);
+
+        btnPrevFacility.setOnClickListener(this);
+        btnNextFacility.setOnClickListener(this);
 
         //INFORMATION
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        viewPagerAdapter.addFragment(new GeneralInformationFragment(), "General Information");
+        //viewPagerAdapter.addFragment(new GeneralInformationFragment(), "General Information");
         viewPagerAdapter.addFragment(new RoomFacilityFragment(), "Room Facility");
         viewPagerAdapter.addFragment(new BathroomFacilityFragment(), "Bathroom Facility");
         viewPagerAdapter.addFragment(new PublicFacilityFragment(), "Public Facility");
         viewPagerAdapter.addFragment(new SurroundingAreaFragment(), "Surrounding Area");
 
         viewPager.setAdapter(viewPagerAdapter);
+
+        buttonController(viewPager);
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                tvFacilityTitle.setText(viewPagerAdapter.getPageTitle(viewPager.getCurrentItem()));
+                buttonController(viewPager);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        tvFacilityTitle.setText(viewPagerAdapter.getPageTitle(viewPager.getCurrentItem()));
+
+        listView = (ListView) findViewById(R.id.listView);
+
+        listViewAdapter = new GeneralInformationListViewAdapter(this);
+
+        listViewAdapter.addInformation("Phone Number","0812345567");
+        listViewAdapter.addInformation("Room Size","12m");
+        listViewAdapter.addInformation("Occupant","Man and Woman");
+        listViewAdapter.addInformation("Deposit","Rp. 1.000.000");
+        listViewAdapter.addInformation("Phone Number","0812345567");
+        listViewAdapter.addInformation("Room Size","12m");
+        listViewAdapter.addInformation("Occupant","Man and Woman");
+        listViewAdapter.addInformation("Deposit","Rp. 1.000.000");
+
+        listView.setAdapter(listViewAdapter);
+
+        sample1 = getResources().getDrawable(R.drawable.sample_1);
+        sample2 = getResources().getDrawable(R.drawable.sample_2);
+
+        linearListView = (LinearListView) findViewById(R.id.linearListView);
+
+        linearListViewAdapter = new RelatedKostLinearListViewAdapter(this);
+
+        linearListViewAdapter.addRelatedKost("Kost Loving Hut","Rp. 1.500.000",sample1);
+        linearListViewAdapter.addRelatedKost("Kost Orange","Rp. 1.300.000",sample2);
+        linearListViewAdapter.addRelatedKost("Kost Anggur","Rp. 1.800.000",sample1);
+        linearListViewAdapter.addRelatedKost("Kost Mandala","Rp. 1.400.000",sample2);
+        linearListViewAdapter.addRelatedKost("Kost Brownis","Rp. 1.000.000",sample1);
+        linearListViewAdapter.addRelatedKost("Kost U9A","Rp. 1.900.000",sample1);
+        linearListViewAdapter.addRelatedKost("Kost Icon","Rp. 2.800.000",sample1);
+        linearListViewAdapter.addRelatedKost("Kost 10Z","Rp. 1.700.000",sample1);
+        linearListViewAdapter.addRelatedKost("Kost U85A","Rp. 1.200.000",sample1);
+        linearListViewAdapter.addRelatedKost("Kost Helena","Rp. 1.900.000",sample1);
+
+        linearListView.setAdapter(linearListViewAdapter);
     }
 
     public void initData(){
@@ -147,6 +235,17 @@ public class KostDetailActivity extends AppCompatActivity implements BaseSliderV
         listChild.put(listHeader.get(3),listSurrounding);
     }
 
+    public void buttonController(ViewPager viewPager){
+        if(viewPager.getCurrentItem() == 0){
+            btnPrevFacility.setVisibility(View.INVISIBLE);
+        }else if(viewPager.getCurrentItem() == viewPagerAdapter.getCount()-1){
+            btnNextFacility.setVisibility(View.INVISIBLE);
+        }else{
+            btnPrevFacility.setVisibility(View.VISIBLE);
+            btnNextFacility.setVisibility(View.VISIBLE);
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home) {
@@ -183,5 +282,18 @@ public class KostDetailActivity extends AppCompatActivity implements BaseSliderV
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == btnNextFacility){
+            viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+            tvFacilityTitle.setText(viewPagerAdapter.getPageTitle(viewPager.getCurrentItem()));
+            buttonController(viewPager);
+        }else if(v == btnPrevFacility){
+            viewPager.setCurrentItem(viewPager.getCurrentItem()-1);
+            tvFacilityTitle.setText(viewPagerAdapter.getPageTitle(viewPager.getCurrentItem()));
+            buttonController(viewPager);
+        }
     }
 }

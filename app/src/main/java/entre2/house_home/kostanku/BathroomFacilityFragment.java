@@ -20,9 +20,9 @@ public class BathroomFacilityFragment extends Fragment {
     GridView gridView;
     FacilityGridViewAdapter gridViewAdapter;
 
-    TextView tvFragmentTitle;
-
     Drawable icon;
+
+    Drawable bathroom_inside, shower, sink, squat_toilet, toilet, water_heater;
 
     public BathroomFacilityFragment() {
         // Required empty public constructor
@@ -37,21 +37,25 @@ public class BathroomFacilityFragment extends Fragment {
 
         Typeface quicksand = Typeface.createFromAsset(getActivity().getAssets(), "Quicksand-Regular.ttf");
 
-        tvFragmentTitle = (TextView) view.findViewById(R.id.tvFragmentTitle);
-
-        tvFragmentTitle.setTypeface(quicksand);
-
         icon = getResources().getDrawable(R.drawable.ic_lock);
+
+        bathroom_inside = getResources().getDrawable(R.drawable.ic_bathroom_inside);
+        shower = getResources().getDrawable(R.drawable.ic_shower);
+        sink = getResources().getDrawable(R.drawable.ic_sink);
+        squat_toilet = getResources().getDrawable(R.drawable.ic_squat_toilet);
+        toilet = getResources().getDrawable(R.drawable.ic_toilet);
+        water_heater  =getResources().getDrawable(R.drawable.ic_water_heater);
 
         gridView = (GridView) view.findViewById(R.id.gridView);
 
         gridViewAdapter = new FacilityGridViewAdapter(getContext());
 
-        gridViewAdapter.addFacility("Bathroom Inside",icon);
-        gridViewAdapter.addFacility("Closet",icon);
-        gridViewAdapter.addFacility("Shower",icon);
-        gridViewAdapter.addFacility("Water Heater",icon);
-        gridViewAdapter.addFacility("Washtafel",icon);
+        gridViewAdapter.addFacility("Bathroom Inside",bathroom_inside);
+        gridViewAdapter.addFacility("Toilet",toilet);
+        gridViewAdapter.addFacility("Squat Toilet",squat_toilet);
+        gridViewAdapter.addFacility("Shower",shower);
+        gridViewAdapter.addFacility("Sink",sink);
+        gridViewAdapter.addFacility("Water Heater",water_heater);
 
         gridView.setAdapter(gridViewAdapter);
 
