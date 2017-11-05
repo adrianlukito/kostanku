@@ -25,14 +25,19 @@ import android.widget.TextView;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import entre2.house_home.kostanku.controllers.UserController;
+import entre2.house_home.kostanku.models.User;
+import entre2.house_home.kostanku.utilities.Session;
+
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TabLayout tabLayout;
     CustomViewPager viewPager;
 
+    TextView tvEmail, tvName;
     BottomNavigationViewEx bottomNavigationView;
-
+    Session session;
     Drawable nearby, campus, area, search;
 
     @Override
@@ -51,6 +56,21 @@ public class HomeActivity extends AppCompatActivity
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
+        UserController.getInstance();
+
+        session = new Session(getApplicationContext());
+        User user = session.getUser();
+
+        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+        View hView = navView.getHeaderView(0);
+        tvEmail = (TextView) hView.findViewById(R.id.tvName);
+        tvName = (TextView) hView.findViewById(R.id.tvEmail);
+
+        if(user != null) {
+            tvEmail.setText(user.getEmail());
+            tvName.setText(user.getName());
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -141,8 +161,15 @@ public class HomeActivity extends AppCompatActivity
         if(id == R.id.nav_login){
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
+            finish();
         }else if(id == R.id.nav_setting){
             Intent intent = new Intent(getApplicationContext(), TestActivity.class);
+            startActivity(intent);
+        }
+        else if(id == R.id.nav_logout){
+            session.logoutSession();
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            finish();
             startActivity(intent);
         }
 

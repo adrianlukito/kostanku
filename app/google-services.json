@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1049329646250",
+    "firebase_url": "https://kosanku-184110.firebaseio.com",
+    "project_id": "kosanku-184110",
+    "storage_bucket": "kosanku-184110.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049329646250:android:d73845b3a6cb5410",
+        "android_client_info": {
+          "package_name": "entre2.house_home.kostanku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1049329646250-83ees0ics0ebfav47nsc859tpaqgu2jm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "entre2.house_home.kostanku",
+            "certificate_hash": "eae1a75e958db896d64a2f14552f8c5ed45e356f"
+          }
+        },
+        {
+          "client_id": "1049329646250-ke03h1v21q5udppn9qu3c0csncmo6uu0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjxCrTKOdSEW-Pwo4f6h3i2D3GYK2h-Us"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1049329646250-ke03h1v21q5udppn9qu3c0csncmo6uu0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

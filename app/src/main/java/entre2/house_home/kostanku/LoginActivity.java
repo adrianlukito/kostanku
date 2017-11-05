@@ -15,14 +15,29 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import entre2.house_home.kostanku.controllers.UserController;
+import entre2.house_home.kostanku.models.User;
+import entre2.house_home.kostanku.utilities.Session;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextView tvSignin, dontHaveAccount, linkSignup;
     EditText txtEmail, txtPassword;
     Button btnSignin;
     TextInputLayout input_layout_email, input_layout_password;
-
+    Session session;
     boolean touch;
+
+
+    public void onBackPressed()
+    {
+        //do whatever you want the 'Back' button to do
+        //as an example the 'Back' button is set to start a new Activity named 'NewActivity'
+        Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+        this.startActivity(intent);
+
+        return;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -62,9 +77,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(v == linkSignup){
             Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
             startActivity(intent);
+            finish();
         }else if(v == btnSignin){
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(intent);
+            String email = txtEmail.getText().toString();
+            String password = txtPassword.getText().toString();
+
+            session = new Session(getApplicationContext());
+            User user = session.getUser();
+            if(user == null){
+                if(UserController.userAuth(email,password)){
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    user = UserController.getUser(email);
+                    session.setUser(user);
+                    startActivity(intent);
+                    finish();
+                }
+            }
         }
     }
+
 }
