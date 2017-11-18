@@ -23,7 +23,6 @@
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

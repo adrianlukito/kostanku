@@ -1,22 +1,200 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="entre2.house_home.kostanku.SearchFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search Fragment"
-        android:textSize="25dp"
-        android:layout_centerInParent="true"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Binus University"
+                android:textAllCaps="false"
+                android:textAlignment="viewStart"
+                android:padding="20dp"
+                android:textSize="17dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_radius_teal_color"
+                android:elevation="10dp"
+                android:drawableLeft="@drawable/ic_signs"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_search_fill"
+                />
 
-    <!--<ListView-->
-        <!--android:id="@+id/kostListView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
+            <co.ceryle.radiorealbutton.RadioRealButtonGroup
+                android:id="@+id/radBtnGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:rrbg_animateDrawables_enter="overshoot"
+                app:rrbg_animateTexts_enter="overshoot"
+                app:rrbg_dividerColor="@color/colorPrimaryDark"
+                app:rrbg_dividerSize="1dp"
+                app:rrbg_radius="50dp"
+                app:rrbg_selectorColor="@color/colorPrimaryDark"
+                android:layout_below="@+id/btnSearch"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:elevation="5dp"
+                app:rrbg_selectorFullSize="true"
+                app:rrbg_animateTexts_textColorFrom="@color/colorBlack"
+                app:rrbg_animateTexts_textColorTo="@color/colorWhite"
+                app:rrbg_animateDrawables_tintColorFrom="@color/colorPrimaryDark"
+                app:rrbg_animateDrawables_tintColorTo="@color/colorWhite"
+                app:rrbg_animateTexts_scale="1"
+                app:rrbg_animateDrawables_scale="1"
 
-    <!--</ListView>-->
+                >
 
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:id="@+id/radBtnMan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:rrb_drawable="@drawable/ic_man"
+                    app:rrb_drawableHeight="25dp"
+                    app:rrb_drawablePadding="8dp"
+                    app:rrb_drawableWidth="25dp"
+                    app:rrb_ripple="true"
+                    app:rrb_rippleColor="#B2DFDB"
+                    app:rrb_text="Man"
+                    app:rrb_textSize="12dp"
+                    app:rrb_textColor="@color/colorBlack"
+                    />
+
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:id="@+id/radBtnWoman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:rrb_drawable="@drawable/ic_woman"
+                    app:rrb_drawableHeight="25dp"
+                    app:rrb_drawablePadding="8dp"
+                    app:rrb_drawableWidth="25dp"
+                    app:rrb_ripple="true"
+                    app:rrb_rippleColor="#B2DFDB"
+                    app:rrb_text="Woman"
+                    app:rrb_textSize="12dp"
+                    app:rrb_textColor="@color/colorBlack"/>
+
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:id="@+id/radBtnManAndWoman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:rrb_drawable="@drawable/ic_man_and_woman"
+                    app:rrb_drawableHeight="25dp"
+                    app:rrb_drawablePadding="8dp"
+                    app:rrb_drawableWidth="25dp"
+                    app:rrb_ripple="true"
+                    app:rrb_rippleColor="#B2DFDB"
+                    app:rrb_text="Man and Woman"
+                    app:rrb_textSize="12dp"
+                    app:rrb_textColor="@color/colorBlack"
+                    />
+
+            </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/priceRangeLayout"
+                android:layout_below="@+id/radBtnGroup"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:id="@+id/tvPriceRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price Range"
+                    android:textSize="17dp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="8dp"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/tvPriceRange"
+                    >
+
+                    <EditText
+                        android:id="@+id/txtMinimumPrice"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textAlignment="center"/>
+                    <TextView
+                        android:id="@+id/tvStrip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="_"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@id/txtMinimumPrice"/>
+                    <EditText
+                        android:id="@+id/txtMaximumPrice"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/tvStrip"
+                        android:text="1.000.000"
+                        android:textAlignment="center"
+                        />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/facilityFilterLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priceRangeLayout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+                <TextView
+                    android:id="@+id/tvFacilityTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Facility"
+                    android:textSize="17dp"
+
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="8dp"/>
+
+                <GridView
+                    android:id="@+id/facilityFilterGridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_below="@id/tvFacilityTitle"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:numColumns="2">
+
+                </GridView>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnFindNow"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Find Now"
+                android:textSize="18dp"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/ripple_transparent_border_fill"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/facilityFilterLayout"
+                android:layout_marginBottom="10dp"/>
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

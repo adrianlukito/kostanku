@@ -1,5 +1,6 @@
 package entre2.house_home.kostanku;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
@@ -44,9 +45,9 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        ReplaceFont.replaceDefaultFont(this, "DEFAULT", "Quicksand-Regular.ttf");
+//        ReplaceFont.replaceDefaultFont(this, "DEFAULT", "Quicksand-Regular.ttf");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +95,7 @@ public class HomeActivity extends AppCompatActivity
 
         viewPager = (CustomViewPager) findViewById(R.id.viewPager);
         viewPager.setPagingEnabled(false);
+        viewPager.setOffscreenPageLimit(4);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 

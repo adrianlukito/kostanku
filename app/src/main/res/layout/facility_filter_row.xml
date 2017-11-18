@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/facilityFilterLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_radius_teal_no_ripple"
+        >
+
+        <TextView
+            android:id="@+id/tvFacilityFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AC"
+            android:textSize="15dp"
+            android:layout_centerVertical="true"
+            android:padding="20dp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginRight="10dp"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp">
+            <ImageView
+                android:id="@+id/imgCheck"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_check"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
