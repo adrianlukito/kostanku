@@ -15,6 +15,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.Vector;
+
+import entre2.house_home.kostanku.models.Kos;
 
 /**
  * Created by Adrian Lukito Lo on 20/10/2017.
@@ -25,9 +28,10 @@ public class KostListViewAdapter extends BaseAdapter{
     ArrayList<String> kostNames;
     ArrayList<String> kostAddresses;
     ArrayList<String> kostGenderTypes;
-    ArrayList<Integer> kostPrices;
+    ArrayList<String> kostPrices;
     ArrayList<Drawable> kostImages;
 
+    Vector<Kos>listKos;
     Context context;
 
     TextView tvKostName, tvKostAddress, tvKostGenderType, tvKostPrice;
@@ -41,24 +45,22 @@ public class KostListViewAdapter extends BaseAdapter{
         this.kostPrices = new ArrayList<>();
         this.kostImages = new ArrayList<>();
         this.context = context;
+        this.listKos = new Vector<>();
     }
 
-    public void addKostList(String kostName, String kostAddress, String kostGenderType, int kostPrice, Drawable kostImage){
-        kostNames.add(kostName);
-        kostAddresses.add(kostAddress);
-        kostGenderTypes.add(kostGenderType);
-        kostPrices.add(kostPrice);
+    public void addKostList(Kos kos, Drawable kostImage){
         kostImages.add(kostImage);
+        listKos.add(kos);
     }
 
     @Override
     public int getCount() {
-        return kostNames.size();
+        return listKos.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return kostNames.get(position);
+        return listKos.get(position).getId();
     }
 
     @Override
@@ -86,33 +88,23 @@ public class KostListViewAdapter extends BaseAdapter{
         tvKostAddress.setTypeface(quicksand);
         tvKostPrice.setTypeface(quicksand);
 
-        String str = kostAddresses.get(position);
+        String str = listKos.get(position).getAddress();
         if(str.length() > 28)
             tvKostAddress.setText(str.substring(0,28)+"...");
         else
             tvKostAddress.setText(str);
 
-        tvKostName.setText(kostNames.get(position));
-        tvKostGenderType.setText(kostGenderTypes.get(position));
-        tvKostPrice.setText("Rp. "+kostPrices.get(position)+"/month");
+        tvKostName.setText(listKos.get(position).getName());
+        tvKostGenderType.setText(listKos.get(position).getOccupant());
+        tvKostPrice.setText("Rp. "+listKos.get(position).getPrice()+"/month");
 
         if(kostImages.get(position) == null)
             kostImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.no_image_available));
         else{
             kostImageView.setImageDrawable(kostImages.get(position));
-//            try {
-//                Glide
-//                        .with(context)
-//                        .load(kostImages.get(position))
-//                        .override(100,100)
-//                        .centerCrop()
-//                        .crossFade()
-//                        .into(kostImageView);
-//            }catch (OutOfMemoryError e){
-//                Log.d("lolo","asd "+e);
-//            }
         }
 
         return convertView;
     }
+
 }

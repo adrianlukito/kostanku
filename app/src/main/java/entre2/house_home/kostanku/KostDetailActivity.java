@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,9 @@ import com.linearlistview.LinearListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import entre2.house_home.kostanku.controllers.KosController;
+import entre2.house_home.kostanku.models.Kos;
 
 public class KostDetailActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener, View.OnClickListener{
 
@@ -61,6 +65,13 @@ public class KostDetailActivity extends AppCompatActivity implements BaseSliderV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kost_detail);
 
+
+        String id = getIntent().getStringExtra("id");
+        Log.v("TEST","id:"+id);
+//        Log.v("TEST", "kosID:"+KosController.getKos(id).getId());
+        Kos kos = KosController.getKos(id);
+        Log.v("TEST","kos:"+kos);
+//        Log.v("TEST","kos: "+kos.getId());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -122,6 +133,12 @@ public class KostDetailActivity extends AppCompatActivity implements BaseSliderV
         btnReview.setTypeface(quicksand);
         tvRelatedKost.setTypeface(quicksand);
 
+        kostName.setText(kos.getName());
+        kostAddress.setText(kos.getAddress());
+        kostPrice.setText(kos.getPrice());
+        kostTitleName.setText(kos.getName());
+
+
         btnPrevFacility.setOnClickListener(this);
         btnNextFacility.setOnClickListener(this);
 
@@ -164,13 +181,9 @@ public class KostDetailActivity extends AppCompatActivity implements BaseSliderV
 
         listViewAdapter = new GeneralInformationListViewAdapter(this);
 
-        listViewAdapter.addInformation("Phone Number","0812345567");
-        listViewAdapter.addInformation("Room Size","12m");
-        listViewAdapter.addInformation("Occupant","Man and Woman");
-        listViewAdapter.addInformation("Deposit","Rp. 1.000.000");
-        listViewAdapter.addInformation("Phone Number","0812345567");
-        listViewAdapter.addInformation("Room Size","12m");
-        listViewAdapter.addInformation("Occupant","Man and Woman");
+        listViewAdapter.addInformation("Phone Number",kos.getPhone());
+        listViewAdapter.addInformation("Room Size",kos.getSize());
+        listViewAdapter.addInformation("Occupant",kos.getOccupant());
         listViewAdapter.addInformation("Deposit","Rp. 1.000.000");
 
         listView.setAdapter(listViewAdapter);

@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/kostanku.iml" filepath="$PROJECT_DIR$/kostanku.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kostanku-master-6f8987e470162e0e4fbf3e83e489702fb497ee66.iml" filepath="$PROJECT_DIR$/kostanku-master-6f8987e470162e0e4fbf3e83e489702fb497ee66.iml" />
     </modules>
   </component>
 </project>

@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import entre2.house_home.kostanku.controllers.KosController;
 import entre2.house_home.kostanku.controllers.UserController;
 import entre2.house_home.kostanku.models.User;
 import entre2.house_home.kostanku.utilities.Session;
@@ -59,7 +60,7 @@ public class HomeActivity extends AppCompatActivity
 //        });
 
         UserController.getInstance();
-
+        KosController.getInstance();
         session = new Session(getApplicationContext());
         User user = session.getUser();
 
